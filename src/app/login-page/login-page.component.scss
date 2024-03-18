@@ -1,0 +1,50 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #fcfcfc;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+
+.btn {
+    --background: rgb(105, 166, 72);
+    --color: rgb(3, 46, 11);
+    font-weight: bold;
+    width: 320px; 
+    margin-left: 0.5%; 
+  }
+
+  .btn-google{
+    --border-color: gray;
+    --color: gray;
+    height: 0.5px;
+    width: 230px;
+  }
+  
+  .Invalido_input{
+    border: 2px solid red;
+  }
+  .Invalido_parrafo{
+    color: red;
+  }

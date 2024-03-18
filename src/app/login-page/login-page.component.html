@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Iniciar sesión</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content [fullscreen]="true">
+    <div id="container">
+
+        <img style="width: 200px; height: 200px; margin-top: 5%;" src="assets/PulhaApp.png" alt="">
+        <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+            
+            <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="email" name="email" type="email" formControlName="email" placeholder="Correo electrónico" ngDefaultControl [ngClass]="{'Invalido_input': LoginEmailInvalido}"></ion-input>
+            <h6 class="Invalido_parrafo" *ngIf="LoginEmailInvalido" style="text-align: left; margin-left: 5%;">El campo es requerido </h6>
+            
+            <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="contrasena" name="contrasena" type="password" formControlName="contrasena" placeholder="Contraseña" ngDefaultControl [ngClass]="{'Invalido_input': LoginPasswordInvalido}"></ion-input>
+            <h6 class="Invalido_parrafo" *ngIf="LoginPasswordInvalido" style="text-align: left; margin-left: 5%;">El campo es requerido </h6>
+
+            <a style="margin-left: 40%; color: black;" href="">¿Olvidaste tu contraseña?</a>
+            
+            <ion-button class="btn" type="submit" shape="round" [disabled]="!LoginInvalid" >Iniciar sesión</ion-button>
+        <ion-item></ion-item>
+
+        </form>
+        
+        <ion-button class="btn-google" fill="outline" shape="round">
+            
+            <img style="width: 35px; height: 35px;" src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png" alt="">
+            Iniciar sesión con Google
+        </ion-button>
+        <div style="display: flex; text-align: center;">
+            <h6 style="margin-left: 15%;">¿No tienes cuenta?</h6>
+            <a routerLink="/Registro" routerDirection="root" style="margin-top: 4%; margin-left: 4%; color: green; font-weight: bold;">Regístrate ahora</a>
+        </div>
+        <hr>
+    </div>
+    
+    
+</ion-content>
