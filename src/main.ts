@@ -27,12 +27,12 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(
       provideFirebaseApp(() =>
         initializeApp({
-          projectId: 'pulha-app',
-          appId: '1:1067143597661:web:e2d9ce717e884bd73c87b4',
-          storageBucket: 'pulha-app.appspot.com',
-          apiKey: 'AIzaSyAQlukfd2YRPAiSQgdlUUzdJczHUQZ1Wjw',
-          authDomain: 'pulha-app.firebaseapp.com',
-          messagingSenderId: '1067143597661',
+          apiKey: "AIzaSyDd4W68Qw56i-ZWHbyur053KtIh-DqYobE",
+          authDomain: "pulha-app-4c977.firebaseapp.com",
+          projectId: "pulha-app-4c977",
+          storageBucket: "pulha-app-4c977.appspot.com",
+          messagingSenderId: "397111874666",
+          appId: "1:397111874666:web:6f6830c4e9daa11b876613"
         })
       )
     ),
