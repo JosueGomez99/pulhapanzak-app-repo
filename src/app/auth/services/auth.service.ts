@@ -12,44 +12,44 @@ const Path = 'users';
   providedIn: 'root'
 })
 export class AuthService {
+  private _auth = inject(Auth);
+  private _firestore = inject(Firestore);
+  private _collection = collection(this._firestore, Path);
 
-  private _auth = inject(Auth)
-  private _firestore = inject(Firestore)
-  private _collection = collection(this._firestore, Path)
+  isUserLoggedIn(): boolean {
+    return !!this.getCurrentUser();
+  }
 
-  CreateUserWithEmailandPassword(registro: Registro){
-    if (this.isUsertLoggedIn()) {
-      return Promise.reject('user already loggued in')
+  private getCurrentUser() {
+    return this._auth.currentUser;
+  }
+
+  CreateUserWithEmailandPassword(registro: Registro) {
+    if (this.isUserLoggedIn()) {
+      return Promise.reject('User already logged in');
     }
     return createUserWithEmailAndPassword(
       this._auth,
       registro.email,
       registro.contrasena
-    )
+    );
   }
 
-  private isUsertLoggedIn(){
-    return !!this.getCurrentUser();
-  }
-
-  private getCurrentUser(){
-    return this._auth.currentUser;
-  }
-
-  signInWithEmailAndPassword(login: IniciarSesion){
-    if (this.isUsertLoggedIn()) {
-      return Promise.reject('User already login')
+  signInWithEmailAndPassword(login: IniciarSesion) {
+    if (this.isUserLoggedIn()) {
+      return Promise.reject('User already logged in');
     }
-    return signInWithEmailAndPassword(this._auth, login.email, login.contrasena)
+    return signInWithEmailAndPassword(
+      this._auth,
+      login.email,
+      login.contrasena
+    );
   }
 
-  signout(){
-    if (!this.isUsertLoggedIn()) {
-      return Promise.reject('user not found')
+  signout() {
+    if (!this.isUserLoggedIn()) {
+      return Promise.reject('User not found');
     }
-    return this._auth.signOut()
+    return this._auth.signOut();
   }
-  
 }
-
-
