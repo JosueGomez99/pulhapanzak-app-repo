@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067143597661",
+    "project_id": "pulha-app",
+    "storage_bucket": "pulha-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067143597661:android:282dc9f11b64f8163c87b4",
+        "android_client_info": {
+          "package_name": "com.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBurTimYAAI3yzOK72GOp_mH5cZkNyq3rU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
