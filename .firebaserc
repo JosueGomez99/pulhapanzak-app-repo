@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pulha-app": {
+      "hosting": {
+        "app": [
+          "pulha-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pulha-app"
+  }
+}

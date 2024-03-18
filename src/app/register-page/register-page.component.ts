@@ -52,7 +52,7 @@ export class RegisterPageComponent {
 
   
   private authService = inject(AuthRegistroService)
-  formBuilder = inject(FormBuilder);
+  private formBuilder = inject(FormBuilder);
   private router = inject(Router)
   
 
@@ -130,6 +130,11 @@ export class RegisterPageComponent {
         email: this.loginForm?.get('email')?.value,
         contrasena: this.loginForm?.get('contrasena')?.value,
         ConfirmarContrasena: this.loginForm?.get('ConfirmarContrasena')?.value,
+        numeroDNI: null, 
+        fechanacimiento: null,
+        numerotelefono: null,
+        imagenperfil: '',
+        
 
       }
       this.authService.registerUserWithEmailAndPassword(login).then((result) => {

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar >
+    <h6 style="text-align: left;">Mi Perfil</h6>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div id="container">
+
+      
+      <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-img
+          class="user-page_photo"
+          [src]="imageSrc"
+          (click)="pickImage()"
+        ></ion-img>
+            
+          </ion-item>
+          <h6 style="text-align: left; margin-left: 8%;">Nombre completo</h6>
+          <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="nombreapellido" name="nombreapellido" type="text" formControlName="nombreapellido" ngDefaultControl [ngClass]="{'inactivo': PerfilNombreApellidoInvalido}"></ion-input>
+          
+          <h6 style="text-align: left; margin-left: 8%;">DNI</h6>
+          <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="numeroDNI" name="numeroDNI" type="text" formControlName="numeroDNI" ngDefaultControl [ngClass]="{'inactivo': !PerfilcontrolNumeroDNI}"></ion-input>
+          <h6 style="text-align: left; margin-left: 8%;">Fecha nacimiento</h6>
+          <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="fechanacimiento" name="fechanacimiento" type="date" formControlName="fechanacimiento" ngDefaultControl [ngClass]="{'inactivo': PerfilcontrolFechaNacimiento}"></ion-input>
+          <h6 style="text-align: left; margin-left: 8%;">Número teléfono</h6>
+          <ion-input style="border-style: groove; width: 345px; margin-left: 2.5%; border-radius: 2ch; text-align: left;" aria-label="numerotelefono" name="numerotelefono" type="text" formControlName="numerotelefono" ngDefaultControl [ngClass]="{'inactivo': !PerfilcontrolNumeroTelefono}"></ion-input>
+          <div style="display: grid; margin-top: 5%;">
+            <ion-button class="btn" type="submit" shape="round" [disabled]="FormInvalid">GUARDAR</ion-button>
+            <ion-button fill="outline" (click)="signOut()"><img height="25px" width="25px" src="https://cdn-icons-png.freepik.com/512/10233/10233766.png" alt="">CERRAR SESIÓN</ion-button>
+          </div>
+      </form>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+

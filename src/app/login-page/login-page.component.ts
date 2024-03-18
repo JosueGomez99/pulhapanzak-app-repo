@@ -64,7 +64,7 @@ export class LoingPageComponent {
       }
       this._authService.signInWithEmailAndPassword(login).then(() => {
         console.log('Usuario entro exitosamente')
-        this._router.navigate(['/Home'])
+        this._router.navigate(['/Perfil'])
       }).catch((error) => {
         console.log('Ha ocurrido un error al hacer login');
         console.log(error);

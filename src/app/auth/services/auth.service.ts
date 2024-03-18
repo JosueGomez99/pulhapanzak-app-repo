@@ -43,6 +43,12 @@ export class AuthService {
     return signInWithEmailAndPassword(this._auth, login.email, login.contrasena)
   }
 
+  signout(){
+    if (!this.isUsertLoggedIn()) {
+      return Promise.reject('user not found')
+    }
+    return this._auth.signOut()
+  }
   
 }
 

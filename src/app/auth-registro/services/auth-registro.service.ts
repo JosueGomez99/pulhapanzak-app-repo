@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, user } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, getDoc } from 'firebase/firestore';
 import { Registro } from 'src/app/services/auth/models/registro';
 
 const Path = 'users';
@@ -10,22 +10,27 @@ const Path = 'users';
   providedIn: 'root'
 })
 export class AuthRegistroService {
+  
 
-  private _auth = inject(Auth)
-  private _firestore = inject(Firestore)
-  private _collection = collection(this._firestore, Path)
+  constructor(
+    private _auth: Auth,
+    private _firestore: Firestore
+  ) {}
 
   createUserInFirestore(registro: Registro){
-    const userReference = doc(this._collection, registro.uid)
-    return setDoc(userReference, {
+    const useRef = doc(this._firestore, Path, registro.uid);
+    return setDoc(useRef, {
+      uid: registro.uid,
       nombreapellido: registro.nombreapellido,
-      email: registro.email,
-
-    })
+      numeroDNI: registro.numeroDNI,
+      fechanacimiento: registro.fechanacimiento,
+      numerotelefono: registro.numerotelefono,
+      imagenperfil: registro.imagenperfil
+    });
   }
 
   registerUserWithEmailAndPassword(registro: Registro){
-    if (this.isUsertLoggedIn()) {
+    if (!this.isUsertLoggedIn()) {
       return Promise.reject('Ya existe una sesión activa.');
     }
     return createUserWithEmailAndPassword(
@@ -35,13 +40,42 @@ export class AuthRegistroService {
     );
   }
 
+  async getUserLogged() {
+    try {
+      const user = await this.getCurrentUser();
+      if (!user) return null;
 
-  private isUsertLoggedIn(){
-    return !!this.getCurrentUser();
+      const userDocument = doc(this._firestore, Path, user.uid);
+      const userSnapshot = await getDoc(userDocument);
+
+      if (userSnapshot.exists()) {
+        const userData = userSnapshot.data() as Registro;
+        return userData;
+      }
+      return null;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  private getCurrentUser(){
-    return this._auth.currentUser;
+  async isUsertLoggedIn() {
+    const user = await this.getCurrentUser();
+    return !!user;
   }
-  
+
+  private getCurrentUser(): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this._auth.onAuthStateChanged((user) => {
+        resolve(user);
+      });
+    });
+  }
+
+  updateUser(user: Registro): Promise<void>{
+    if (!user.uid) {
+      throw Error('User not found');
+    }
+    const userDocument = doc(this._firestore, Path, user.uid);
+    return setDoc(userDocument, user, { merge: true });
+  }
 }

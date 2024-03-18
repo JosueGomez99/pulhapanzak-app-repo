@@ -1,0 +1,45 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #fcfcfc;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+
+  .inactivo{
+    border: 2px solid red 
+  }
+  .inactivo_parrafo{
+    color: red; 
+   
+  }
+  .user-page_photo {
+    width: 120px;
+    height: 120px;
+    
+    
+    margin-left: 30%;
+    margin-top: 25%;
+    border-radius: 1000%;
+  }
