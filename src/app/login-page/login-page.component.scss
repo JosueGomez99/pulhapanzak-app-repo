@@ -8,7 +8,9 @@
     transform: translateY(-50%);
     
   }
-  
+  ion-input {
+    margin-bottom: 10px; // Espacio después de cada input
+  }
   #container strong {
     font-size: 20px;
     line-height: 26px;
