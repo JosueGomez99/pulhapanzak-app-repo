@@ -16,6 +16,13 @@ export class AuthService {
   private _firestore = inject(Firestore);
   private _collection = collection(this._firestore, Path);
 
+  constructor() {
+    // Suscribirse al evento beforeunload para cerrar sesión cuando el usuario abandone el sitio web
+    window.addEventListener('beforeunload', () => {
+      this.signout();
+    });
+  }
+
   isUserLoggedIn(): boolean {
     return !!this.getCurrentUser();
   }

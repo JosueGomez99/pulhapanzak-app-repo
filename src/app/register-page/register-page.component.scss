@@ -1,83 +1,90 @@
 #container {
-    text-align: center;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    
-  }
-  
-  #container strong {
+  strong {
     font-size: 20px;
     line-height: 26px;
   }
   
-  #container p {
+  p {
     font-size: 16px;
     line-height: 22px;
-  
     color: #fcfcfc;
-  
     margin: 0;
   }
   
-  #container a {
+  a {
     text-decoration: none;
   }
+}
+
+.navbar {
+  background-color: red;
+}
+
+.titulo {
+  text-align: center;
+  margin-top: 1%;
+  font-weight: bold;
+  color: rgb(241, 55, 8);
+}
+
+.inactivo_registro {
+  border: 2px solid red;
+}
+
+.inactivo_parrafo {
+  color: red;
+}
+
+.icono,
+.icono-dos {
+  width: 25px;
+  height: 25px;
+  margin-top: 3.5%;
+  margin-left: 5%;
+}
+
+.icono-dos {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.btn {
+  --background: rgb(105, 166, 72);
+  --color: rgb(3, 46, 11);
+  font-weight: bold;
+  width: 320px;
+  margin-left: 0.5%;
+}
+
+.btn-google {
+  --border-color: gray;
+  --color: gray;
+  height: 0.5px;
+  width: 220px;
+}
+
+ion-input {
+  border-style: groove;
+  width: 345px;
+  margin-left: 2.5%;
+  border-radius: 2ch;
+  text-align: left;
   
-  .navbar{
-    background-color: red;
-  }
-  
-  .titulo{
-    text-align: center;
-    margin-top: 1%;
-    font-weight: bold;
-    color: rgb(241, 55, 8);
-  }
-  
-  .inactivo_registro{
+  &.inactivo_registro {
     border: 2px solid red;
-    
   }
-  
-  .inactivo_parrafo{
-   color: red; 
-  
-  }
-
-  .icono{
-    width: 25px;
-    height: 25px;
-    margin-top: 3.5%;
-    margin-left: 5%;
-    
-  }
-  
-  .icono-dos{
-    width: 25px;
-    height: 25px;
-    margin-top: 2%;
-    margin-left: 2%;
-  }
-
-  .btn {
-    --background: rgb(105, 166, 72);
-    --color: rgb(3, 46, 11);
-    font-weight: bold;
-    width: 320px; 
-    margin-left: 0.5%; 
-  }
-  .btn-google{
-    --border-color: gray;
-    --color: gray;
-    height: 0.5px;
-    width: 220px;
-  }  
-    
-    
-
-  
-  
+}
+ion-input {
+  margin-bottom: 10px; // Espacio después de cada input
+}
+h6.inactivo_parrafo {
+  text-align: left;
+  margin-left: 5%;
+}

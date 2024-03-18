@@ -59,44 +59,24 @@ export class ProfilePageComponent implements OnInit {
   });
   
 
-  get PerfilNombreApellidoInvalido(): boolean{
+  get PerfilNombreApellidoInvalido(): boolean {
     const perfilcontrolNombreApellido = this.UserForm.get('nombreapellido');
-
-    if (perfilcontrolNombreApellido) {
-      return perfilcontrolNombreApellido.hasError('required');
-      
-    }
-      return false;
+    return perfilcontrolNombreApellido ? perfilcontrolNombreApellido.invalid : false;
   }
-
-  get PerfilcontrolNumeroDNI(): boolean{
+  
+  get PerfilcontrolNumeroDNI(): boolean {
     const perfilcontrolNumeroDNI = this.UserForm.get('numeroDNI');
-
-    if (perfilcontrolNumeroDNI) {
-      return perfilcontrolNumeroDNI.hasError('minlength');
-      
-    }
-      return false;
+    return perfilcontrolNumeroDNI ? perfilcontrolNumeroDNI.invalid : false;
   }
-
-  get PerfilcontrolFechaNacimiento(): boolean{
+  
+  get PerfilcontrolFechaNacimiento(): boolean {
     const perfilcontrolFechaNacimiento = this.UserForm.get('fechanacimiento');
-
-    if (perfilcontrolFechaNacimiento) {
-      return perfilcontrolFechaNacimiento.hasError('required');
-      
-    }
-      return false;
+    return perfilcontrolFechaNacimiento ? perfilcontrolFechaNacimiento.invalid : false;
   }
-
-  get PerfilcontrolNumeroTelefono(): boolean{
+  
+  get PerfilcontrolNumeroTelefono(): boolean {
     const perfilcontrolNumeroTelefono = this.UserForm.get('numerotelefono');
-
-    if (perfilcontrolNumeroTelefono) {
-      return perfilcontrolNumeroTelefono.hasError('minlength');
-      
-    }
-      return false;
+    return perfilcontrolNumeroTelefono ? perfilcontrolNumeroTelefono.invalid : false;
   }
   
 
@@ -123,23 +103,20 @@ export class ProfilePageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    debugger;
     if (!this.FormInvalid && this.user) {
       this.user.nombreapellido = this.UserForm?.get('nombreapellido')?.value;
       this.user.numeroDNI = this.UserForm?.get('numeroDNI')?.value;
       this.user.fechanacimiento = this.UserForm?.get('fechanacimiento')?.value;
       this.user.numerotelefono = this.UserForm?.get('numerotelefono')?.value;
       this.profileService
-      .uploadImage(this.imageSrc, this.user?.uid ?? '')
-      .then((url) => {
-        debugger;
-        if (url) {
-
-          if (this.user) this.user.imagenperfil = url;
-        }
-        this.saveUser();
-        console.log("Se a guardado: ",this.saveUser());
-      })
+        .uploadImage(this.imageSrc, this.user?.uid ?? '')
+        .then((url) => {
+          if (url) {
+            if (this.user) this.user.imagenperfil = url;
+          }
+          this.saveUser();
+          console.log("Se a guardado: ", this.saveUser());
+        })
         .catch(() => {
           console.log("Ha ocurrido un error al cambiar su imagen de perfil, vuelva a intentarlo");
         });
